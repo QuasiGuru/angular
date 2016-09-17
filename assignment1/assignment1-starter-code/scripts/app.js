@@ -29,10 +29,11 @@
     }
 
     function numberOfDishes(text) {
-        var nod = 1;
+        var items = text.split(",");
+        var nod = items.length;
 
-        for (var i = 0; i < text.length; i++) {
-            if (text.charAt(i) == ',') nod++;
+        for (var i in items) {
+            if (emptyText(items[i])) nod--;
         }
 
         return nod;
