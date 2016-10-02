@@ -13,7 +13,7 @@ function FoundItemsDirective() {
         scope: {
             items: '<foundItem',
             onRemove: '&',
-            hasError: '&'
+            hasError: '&',
         },
         controller: FoundItemsDirectiveController,
         controllerAs: 'menu',
@@ -25,6 +25,10 @@ function FoundItemsDirective() {
 
 function FoundItemsDirectiveController() {
     var menu = this;
+
+    menu.hasItems = function() {
+        return menu.items.length > 0;
+    }
 }
 
 NarrowItDownController.$inject = ['MenuSearchService'];
@@ -69,7 +73,7 @@ function MenuSearchService($http, ApiBasePath) {
             url: (ApiBasePath + '/menu_items.json')
         }).then(function (result) {
             var foundItems = [];
-            if (searchTerm == null) return foundItems;
+            if (searchTerm === null || searchTerm === "") return foundItems;
             
             var discs = result.data.menu_items;
 
