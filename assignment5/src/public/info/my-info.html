@@ -1,0 +1,35 @@
+<div class="container">
+    <h2 id="menu-categories-title" class="text-center">User Info</h2>
+    <div ng-show="infoCtrl.userExists()">
+        <div class="menu-item-description col-md-6">
+            <h3 class="menu-item-title">Details</h3>
+            <p class="menu-item-details">
+                &bull; <b>Name</b>: {{infoCtrl.user.first_name}} {{infoCtrl.user.last_name}}</br />
+                &bull; <b>Email</b>: {{infoCtrl.user.email}}</br />
+                &bull; <b>Phone Number</b>: {{infoCtrl.user.phone}}
+            </p>
+        </div>
+        <div class="menu-item-tile col-md-6">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="menu-item-photo">
+                        <div>{{infoCtrl.user.meal.short_name}}</div>
+                        <img class="img-responsive" width="250" height="150" 
+                            ng-src="{{infoCtrl.basePath}}/images/{{infoCtrl.user.meal.short_name}}.jpg" 
+                            alt="{{infoCtrl.user.meal.name}}">
+                    </div>
+                </div>
+                <div class="menu-item-description col-sm-7">
+                    <h3 class="menu-item-title">Favorite Meal</h3>
+                    <p class="menu-item-details">
+                        <b>{{infoCtrl.user.meal.name}}</b> -- {{infoCtrl.user.meal.description}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-hide="infoCtrl.userExists()">
+        Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+    </div>
+</div>
