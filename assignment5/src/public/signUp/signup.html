@@ -35,7 +35,8 @@
             <label for="phone" class="col-sm-2 control-label">Phone Number</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control" name="phone" 
-                    placeholder="Enter your phone number"
+                    placeholder="Phone ###-###-####"
+                    pattern="(\d{3})-(\d{3})-(\d{4})"
                     ng-model="signCtrl.user.phone"
                     required>
             </div>
